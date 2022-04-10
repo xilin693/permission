@@ -1,0 +1,17 @@
+.idea
+/application/vendor
+/application/log/*.log
+/application/log/*.php
+/tests/bulid
+/application/lite/*
+/deploy
+.DS_Store
+README.md
+composer.lock
+.env_local
+.env
+/public/.htaccess
+Help.php
+/application/diff.txt
+/application/new.txt
+/application/old.txt
