@@ -11,7 +11,7 @@ class Menu
     public function get()
     {
         $rs = MenuService::getList();
-        Response::sendResponseJson(200, $rs);
+        Response::sendSuccessJson($rs);
     }
 
     public function add()
@@ -19,7 +19,7 @@ class Menu
         $data = P();
         MenuValidate::check($data, 'save');
         $rs = MenuService::save($data);
-        Response::sendResponseJson(200, $rs);
+        Response::sendSuccessJson($rs);
     }
 
     public function edit($id)
@@ -27,20 +27,20 @@ class Menu
         $data = steam($id);
         MenuValidate::check($data);
         $rs = MenuService::update($id, $data);
-        Response::sendResponseJson(200, $rs);
+        Response::sendSuccessJson($rs);
     }
 
     public function delete($id)
     {
         MenuValidate::check($id, 'delete');
         MenuService::delete($id);
-        Response::sendResponseJson(200);
+        Response::sendSuccessJson();
     }
 
     public function detail($id)
     {
         MenuValidate::check($id, 'detail');
         $rs = MenuService::getInfo($id);
-        Response::sendResponseJson(200, $rs);
+        Response::sendSuccessJson($rs);
     }
 }

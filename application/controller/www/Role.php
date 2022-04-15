@@ -11,7 +11,7 @@ class Role
     public function get()
     {
         $rs = RoleService::getList(G('status'));
-        Response::sendResponseJson(200, $rs);
+        Response::sendSuccessJson($rs);
     }
 
     public function add()
@@ -19,7 +19,7 @@ class Role
         $data = P();
         RoleValidate::check($data, 'save');
         $rs = RoleService::save($data);
-        Response::sendResponseJson(200, $rs);
+        Response::sendSuccessJson($rs);
     }
 
     public function edit($id)
@@ -27,26 +27,26 @@ class Role
         $data = steam($id);
         RoleValidate::check($data, 'update');
         $rs = RoleService::update($id, $data);
-        Response::sendResponseJson(200);
+        Response::sendSuccessJson();
     }
 
     public function delete($id)
     {
         RoleValidate::check($id, 'delete');
         RoleService::delete($id);
-        Response::sendResponseJson(200);
+        Response::sendSuccessJson();
     }
 
     public function detail($id)
     {
         RoleValidate::check($id, 'detail');
         $rs = RoleService::getInfo($id);
-        Response::sendResponseJson(200, $rs);
+        Response::sendSuccessJson($rs);
     }
 
     public function menu()
     {
         $rs = RoleService::getRoleMenu();
-        Response::sendResponseJson(200, $rs);
+        Response::sendSuccessJson($rs);
     }
 }

@@ -15,7 +15,7 @@ class Dict
         $data = G();
         PageValidate::check($data);
         $rs = DictService::getList($data);
-        Response::sendResponseJson(200, $rs);
+        Response::sendSuccessJson($rs);
     }
 
     public function add()
@@ -23,7 +23,7 @@ class Dict
         $data = P();
         DictValidate::check($data, 'save');
         $rs = DictService::save($data);
-        Response::sendResponseJson(200, $rs);
+        Response::sendSuccessJson($rs);
     }
 
     public function edit($id)
@@ -31,14 +31,14 @@ class Dict
         $data = steam($id);
         DictValidate::check($data, 'update');
         DictService::update($data);
-        Response::sendResponseJson(200);
+        Response::sendSuccessJson();
     }
 
     public function delete($id)
     {
         DictValidate::check($id, 'only_id');
         DictService::delete($id);
-        Response::sendResponseJson(200);
+        Response::sendSuccessJson();
     }
 
     public function detail($id)
@@ -46,6 +46,6 @@ class Dict
         DictValidate::check($id, 'only_id');
         $rs = DictService::getInfo($id);
         $rs = ParamHelper::revertJson($rs, ['item']);
-        Response::sendResponseJson(200, $rs);
+        Response::sendSuccessJson($rs);
     }
 }
